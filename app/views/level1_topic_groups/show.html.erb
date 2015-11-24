@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @level1_topic_group.name %></h1>
+
+<br>
+
+<h4>Aiheet</h4>
+
+<table class = "table">
+ 
+    <% @level1_topic_group.topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.name, topic %></td>
+       
+      </tr>
+    <% end %>
+ 
+</table>
+
+<br>
+
+<a href="javascript:history.back()">Takaisin</a>

@@ -1,0 +1,36 @@
+<% provide(:title, @user.name) %>
+
+
+      <h1>
+        <%= @user.name %>
+      </h1>
+
+<p>&nbsp;</p>
+
+<table class='table'>
+
+	<tr>
+		<td>
+		<strong>Opittu aihe</strong>
+		</td>
+			
+	</tr>
+
+<% for user_topic in @user.user_topics %>
+
+
+	<tr>
+		<td>
+		<%= link_to user_topic.topic.name, user_topic.topic %>
+		</td>
+
+	</tr>	
+    
+<% end %>
+	
+</table>
+
+<p>&nbsp;</p>
+
+
+<a href="javascript:history.back()">Takaisin</a>

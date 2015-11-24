@@ -1,0 +1,119 @@
+<h1><%= @topic.name + ' - kysymykset'%></h1>
+
+<p>&nbsp;</p>
+
+<div id="car01" class="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false" data-keyboard="true">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    
+	<% if @topic.questions %>
+		 <% @topic.questions.each_with_index do |question, index| %>
+		 	<li data-target="#carousel-example-generic" data-slide-to="<%= index %>" <% if index==0 then 'class=\"active\"' end %>></li>
+		 <% end %>
+	<% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+<!-- 	
+	<% if @first_question != nil %>
+	
+	
+	
+	    <div class="item active">
+	      <div class="col-md-2 col-xs-2"></div>
+	      <div class="col-md-8 col-xs-8">
+	        <div class="panel panel-primary">
+	          <div class="panel-heading">
+	            <h4>Kysymys 1</h4>
+	          </div>
+	          <div class="panel-body">
+	            <p><%= @first_question.text %></p>
+	            
+				<% @first_question.answers.each_with_index do |answer,index| %>
+					<div class="radio">
+			          <label>
+						  <input type="radio" name="optionsRadios" id="<%= 'firstQsAnswers' + index.to_s %>" value="<%= answer.id %>"> <%= answer.text %>
+			          </label>
+			       </div>
+				<% end %>
+				
+	          </div>
+	  
+	          <div class="panel-footer">
+	            <p>Kysymys 1/<%= 1 + @other_questions.count if @other_questions %></p>
+	          </div>
+	       
+	        </div>
+	    
+	      </div>
+	     
+	    </div>
+	<% end %>
+	-->
+
+	  
+    <% @topic.questions.each_with_index do |question, index| %>
+ 	
+		    <div class= "<%= 'item' + if index==0 then ' active' else '' end %>">
+		      <div class="col-md-2 col-xs-2"></div>
+		      <div class="col-md-8 col-xs-8">
+		        <div class="panel panel-primary">
+		          <div class="panel-heading">
+		            <h4>Kysymys <%= index+1 %></h4>
+		          </div>
+		          <div class="panel-body">
+		            <p><%= question.text %></p>
+	            
+					<% question.answers.each_with_index do |answer,i| %>
+						<div class="radio">
+				          <label>
+							  <input type="radio" name="optionsRadios" id="<%='answers' + i.to_s %>" value="<%= answer.id %>"> <%= answer.text %>
+				          </label>
+				       </div>
+					<% end %>
+		          </div>
+		          <div class="panel-footer">
+		            <table border="0">
+						<tr>
+							<td width="95%">
+								Kysymys <%= index+1 %>/<%= 1 + @topic.questions.count %></p>
+							</td>
+							<td>
+								<%= submit_tag("Lähetä") %>
+							</td>
+						</tr>
+					</table>
+		          </div>
+		          <!-- panel footer -->
+		        </div>
+		        <!-- /panel-primary -->
+		      </div>
+		      <!-- /col-md-8 -->
+		    </div>
+	
+	<% end %>
+  
+    
+  
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control extra" href="#car01" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left extra" aria-hidden="true"></span>
+    <span class="sr-only">Edellinen</span>
+  </a>
+  <a class="right carousel-control extra" href="#car01" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right extra" aria-hidden="true"></span>
+    <span class="sr-only">Seuraava</span>
+  </a>
+</div>
+
+
+
+<p>&nbsp;</p>
+
+
+<a href="javascript:history.back()">Takaisin</a>
+      

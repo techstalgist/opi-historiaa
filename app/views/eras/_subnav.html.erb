@@ -1,0 +1,19 @@
+ 
+<% cache do %> 
+  <ul class="nav nav-pills nav-stacked nav-tree">
+	<% if @eras_nav != nil %>
+	
+		 <% for era in @eras_nav %>
+	 
+ 			<% if era == @era %>
+				<li class="active"><%= link_to era.name, era %>
+				</li>
+			<% else %>
+				<li><%= link_to era.name, era %>
+				</li>
+			<% end %>
+		<% end %>
+	 
+	<% end %>
+  </ul>
+<% end %>

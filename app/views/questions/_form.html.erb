@@ -1,0 +1,22 @@
+<p>Aihe: <%= @topic.name %></p><br>
+
+<%= form_for ([@topic,@question]) do |f| %>
+  
+ <div class="form-group">
+  <%= f.label :text, "Kysymys" %><br />
+  <%= f.text_area :text, :class => "form-control" %>
+ </div>
+
+  
+  <div class="form-group">
+  <%= f.fields_for :answers do |answer| %>
+    <%= render "answer_fields", :f => answer %>	
+  <% end %>
+  
+  <%= link_to_add_association 'Lisää vastaus', f, :answers %>
+  </div>
+  
+  <%= f.hidden_field :topic_id, :value => @topic.id %>
+  
+  <%= f.submit 'Luo', :class => 'btn btn-default' %>
+<% end %>

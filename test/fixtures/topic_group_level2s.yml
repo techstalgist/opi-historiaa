@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level1_topic_group_id: 
+  name: MyString
+  start_year: 2015-11-12
+  end_year: 2015-11-12
+
+two:
+  level1_topic_group_id: 
+  name: MyString
+  start_year: 2015-11-12
+  end_year: 2015-11-12

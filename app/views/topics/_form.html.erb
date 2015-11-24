@@ -1,0 +1,77 @@
+<%= form_for(@topic) do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nimi" %><br>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_date, "Alkupvm" %><br>
+     <input type='text' name ="topic[start_date]" class="form-control" id='topic_start_date' />
+  </div>
+  <div class="form-group">
+    <%= f.label :end_date, "Loppupvm" %><br>
+     <input type='text' name ="topic[end_date]" class="form-control" id='topic_end_date' />
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :level1_topic_group_id, "Aikajakso" %><br>
+    <select class="form-control" name = "topic[level1_topic_group_id]" id="topic_level1_topic_group_id">
+    	<%for group in @level1_topic_groups %>
+		<option value="<%= group.id %>"><%= group.name %></option>
+		<% end %>
+    </select>
+  </div>
+  
+  <div class="form-group">
+  <%= f.fields_for :key_points do |key_point| %>
+    <%= render "key_point_fields", :f => key_point %>	
+  <% end %>
+  
+  <%= link_to_add_association 'Lisää sisällön ydinkohta', f, :key_points %>
+  </div>
+   
+  <div class="form-group">
+  <%= f.fields_for :causes do |cause| %>
+    <%= render "cause_fields", :f => cause %>	
+  <% end %>
+  
+  <%= link_to_add_association 'Lisää syy', f, :causes %>
+  </div>
+  
+  <div class="form-group">
+  <%= f.fields_for :consequences do |conseq| %>
+    <%= render "consequence_fields", :f => conseq %>	
+  <% end %>
+  
+  <%= link_to_add_association 'Lisää seuraus', f, :consequences %>
+  </div>
+  
+  <div class="form-group">
+  <%= f.fields_for :locations do |loc| %>
+    <%= render "location_fields", :f => loc %>	
+  <% end %>
+  
+  <%= link_to_add_association 'Lisää paikka', f, :locations %>
+	</div>
+	
+    <div class="form-group">
+    <%= f.fields_for :parties do |party| %>
+      <%= render "party_fields", :f => party %>	
+    <% end %>
+  
+    <%= link_to_add_association 'Lisää osapuoli', f, :parties %>
+    </div> 
+   
+    <%= f.submit 'Luo', :class => 'btn btn-default' %>
+<% end %>

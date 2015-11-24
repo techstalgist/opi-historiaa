@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+
+		<%= @question.text %>
+		
+		<p>&nbsp;</p>
+			
+		<strong>Vaihtoehdot: </strong><br>
+		<% for answer in @question.answers %>
+			<li><%= answer.text %>	</li>
+		<% end %>
+	
+
+<p>&nbsp;</p>
+
+<a href="javascript:history.back()">Takaisin</a>

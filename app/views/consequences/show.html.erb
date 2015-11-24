@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @consequence.topic %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @consequence.text %>
+</p>
+
+<%= link_to 'Edit', edit_consequence_path(@consequence) %> |
+<%= link_to 'Back', consequences_path %>

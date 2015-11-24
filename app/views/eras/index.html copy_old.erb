@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aikakaudet</h1>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nimi</th>
+      <th>Alkaa</th>
+      <th>Päättyy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eras.each do |era| %>
+      <tr>
+         <td><%= link_to era.name, era %></td>
+        <td><%= era.start_year == nil ? nil :  year_from_date(era.start_year) %></td>
+        <td><%= era.end_year == nil ? nil : year_from_date(era.end_year) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Key Points</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @key_points.each do |key_point| %>
+      <tr>
+        <td><%= key_point.topic %></td>
+        <td><%= key_point.text %></td>
+        <td><%= link_to 'Show', key_point %></td>
+        <td><%= link_to 'Edit', edit_key_point_path(key_point) %></td>
+        <td><%= link_to 'Destroy', key_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Key point', new_key_point_path %>

@@ -1,0 +1,27 @@
+<% cache do %>
+
+ <ul class="nav nav-pills nav-stacked nav-tree">
+	  <% for era in @eras %>
+	   <li><%= link_to era.name, era  %>
+			   
+ 		  	 <% if @topic != nil && era.level1_topic_groups.count > 0 &&  era.level1_topic_groups.include?(@topic.level1_topic_group) %>
+ 		   	<ul class="nav nav-pills nav-stacked nav-tree">
+  		   		<% for level1_topic_group in era.level1_topic_groups %>
+ 		   	 		<% if level1_topic_group == @topic.level1_topic_group %>
+ 						<li class="active"><%= link_to level1_topic_group.name, level1_topic_group %>
+ 						</li>
+ 					<% else %>
+ 						<li><%= link_to level1_topic_group.name, level1_topic_group %>
+ 						</li>
+ 					<% end %>
+  		   		<% end %>
+ 		  	</ul>
+ 		    <% end %>
+		   	   
+		  
+	   </li>
+	 <% end %>
+
+ </ul>
+
+<% end %>

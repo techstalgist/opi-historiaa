@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Topic group level 1:</strong>
+  <%= @level2_topic_group.level1_topic_group %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @level2_topic_group.name %>
+</p>
+
+<p>
+  <strong>Start year:</strong>
+  <%= @level2_topic_group.start_year %>
+</p>
+
+<p>
+  <strong>End year:</strong>
+  <%= @level2_topic_group.end_year %>
+</p>
+
+<%= link_to 'Edit', edit_level2_topic_group_path(@level2_topic_group) %> |
+<%= link_to 'Back', level2_topic_groups_path %>

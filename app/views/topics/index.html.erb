@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aiheet</h1>
+
+<br>
+
+<table class = "table">
+ 
+
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.name, topic %></td>
+       
+      </tr>
+    <% end %>
+ 
+</table>
+
+<br>
+
+<%= link_to 'Uusi aihe', new_topic_path %>

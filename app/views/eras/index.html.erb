@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aikakaudet</h1>
+
+<p>&nbsp;</p>
+<p>Raahaa aikakaudet hiirellä oikeaan järjestykseen.
+</p>
+
+<div class="panel panel-default extra">
+	<div class="panel-body">
+	<ul id="sortable">
+  	  <% for era in @eras %>
+  		<li class="ui-state-default" id = "era_<%= era.id %>"><%= era.name %></li>
+  	  <% end %>
+	</ul>
+	</div>
+</div>

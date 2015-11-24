@@ -1,0 +1,101 @@
+<h1><%= @topic.name + ' - kysymykset'%></h1>
+
+<p>&nbsp;</p>
+
+<div id="car01" class="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false" data-keyboard="true">
+  <!-- Indicators -->
+  <ol class="carousel-indicators extra">
+    
+	<% if @topic.questions %>
+		 <% @topic.questions.each_with_index do |question, index| %>
+		 	<% if index == 0%>
+				<li data-target="#car01" data-slide-to="<%= index %>" class="active"></li>
+			<% else %>
+				<li data-target="#car01" data-slide-to="<%= index %>" </li>
+			<% end %>
+			
+		 <% end %>
+	<% end %>
+  </ol>
+
+
+  <%= form_for ([@topic,@response_set]) do %>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+	  
+    <% @topic.questions.each_with_index do |question, index| %>
+ 	
+		    <div class= "<%= 'item' + if index==0 then ' active' else '' end %>">
+		      <div class="col-md-2 col-xs-2"></div>
+		      <div class="col-md-8 col-xs-8">
+		        <div class="panel panel-primary">
+		          <div class="panel-heading">
+		            <h4>Kysymys <%= index+1 %></h4>
+		          </div>
+		          <div class="panel-body">
+		            <p><%= question.text %></p>
+	            
+					<% question.answers.each_with_index do |answer,i| %>
+						<div class="radio">
+						  <label>
+				          	<%= radio_button_tag("answer[#{question.id}]", answer.id) %>
+				          	<%= answer.text %>
+					      </label>
+					   </div>
+					<% end %>
+		          </div>
+		          <div class="panel-footer">
+		            
+					<table>
+						<tr>
+							<% if index+1 == @topic.questions.count %>
+								<td width="95%" class="carousel-table">
+									Kysymys <%= index+1 %>/<%= @topic.questions.count %></p>
+								</td>
+								<td>
+									<%= submit_tag("Lähetä", class: "btn btn-default") %>
+								</td>
+							<% else %>
+								<td width="100%" class="carousel-table">
+									Kysymys <%= index+1 %>/<%= @topic.questions.count %></p>
+								</td>
+							<% end %>
+						</tr>
+					</table>
+		          </div>
+		          <!-- panel footer -->
+		        </div>
+		        <!-- /panel-primary -->
+		      </div>
+		      <!-- /col-md-8 -->
+		    </div>
+	
+	<% end %>
+  
+    
+  
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control extra" href="#car01" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left extra" aria-hidden="true"></span>
+    <span class="sr-only">Edellinen</span>
+  </a>
+  <a class="right carousel-control extra" href="#car01" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right extra" aria-hidden="true"></span>
+    <span class="sr-only">Seuraava</span>
+  </a>
+  
+  <%= hidden_field_tag :user_id, session[:user_id] %>
+  
+  <% end %>
+</div>
+
+
+
+<p>&nbsp;</p>
+
+
+<a href="javascript:history.back()">Takaisin</a>
+      

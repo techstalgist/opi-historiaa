@@ -1,0 +1,17 @@
+ul.nav-tree {
+    list-style: none;
+    margin-left:0px;
+
+    ul.nav-tree {
+        margin-left: 25px;
+    }
+
+    li {
+        position: relative;
+        a {
+            text-indent: 10px;
+        }
+
+    }
+
+}

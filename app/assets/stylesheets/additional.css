@@ -1,0 +1,110 @@
+
+html, body {
+	height:100%;
+}
+
+.navbar-header.width {
+	width:16.7%;
+}
+
+.container-fluid.extra {
+	height: 100%;
+	overflow: hidden;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.col-md-2.navleft {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: -9999px;
+	padding-bottom: 9999px;
+    border: 1px solid transparent;
+	border-top-width: 0px;
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+	padding-right: 0px;
+	padding-left: 0px;
+
+}
+
+.col-md-10.content {
+   
+	padding-left: 35px;
+    margin-bottom: -9999px;
+	padding-bottom: 9999px;
+}
+
+.navbar.nobottom
+{
+	margin-bottom:0px;
+}
+
+.left.carousel-control.extra, .right.carousel-control.extra
+{
+	background-image:none;
+}
+
+
+.glyphicon-chevron-right.extra, .glyphicon-chevron-left.extra
+{
+	color: #428bca;
+}
+
+.carousel-indicators.extra {
+	width:100px;
+	left:75%;
+}
+
+.carousel-table {
+	padding-top:5px;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#sortable { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 450px;
+	
+}
+#sortable li { 
+	margin: 3px 3px 3px 0; 
+	padding: 1px; 
+	float: left; 
+	width: 100px; 
+	height: 90px; 
+	font-size: 1.5em; 
+	text-align: center; 
+	cursor: move;
+}
+
+.panel.panel-default.extra {
+	width:350px;
+}
+
+
+	

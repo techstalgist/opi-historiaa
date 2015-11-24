@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @key_point.topic %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @key_point.text %>
+</p>
+
+<%= link_to 'Edit', edit_key_point_path(@key_point) %> |
+<%= link_to 'Back', key_points_path %>

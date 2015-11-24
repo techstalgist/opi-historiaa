@@ -1,0 +1,21 @@
+<h1><%= @topic.name + ' - kysymykset'%></h1>
+
+ <%= form_for ([@topic,@response_set]) do %>
+  <ol class="questions">
+   <% @topic.questions.each do |question| %>
+   <li>
+   <%= question.text %>
+     <ol class="answers">
+     <% question.answers.each do |answer| %>
+      <li>
+        <%= radio_button_tag("answer[#{question.id}]", answer.id) %>
+        <%= label("answer_".concat(answer.id.to_s).to_sym, answer.text) %>
+      </li>
+     <% end %>
+     </ol>
+   </li>
+   <% end %>
+  </ol>
+
+  <div><%= submit_tag("Lähetä", :class => "submit") %></div>
+ <% end %>

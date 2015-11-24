@@ -1,0 +1,2 @@
+module Level2TopicGroupsHelper
+end

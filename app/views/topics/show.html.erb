@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<div class = "row">
+	<div class="col-md-5">
+	<h1><%= @topic.name %></h1>
+	<%= year_from_date(@topic.start_date) %> - <%= year_from_date(@topic.end_date) %>
+	</div>
+	<div class="col-md-2">
+	<% if !@user_topic.empty? %>
+		<img src = "/martin_luther.jpg" class="img-thumbnail">
+	<% end %>
+	</div>
+</div>
+<p>&nbsp;</p>
+
+<% if !@user_topic.empty? %>
+
+<table class='table'>
+
+	<tr>
+		<td>
+		<strong><%= @topic.locations.count == 1 ? 'Paikka:' : 'Paikat:'  %></strong><br>
+		<% for location in @topic.locations %>
+		<%= location.name %> <br>
+		<% end %>
+		</td>
+		
+		<td colspan=2>
+		<strong>Osapuolet: </strong><br>
+		<% for party in @topic.parties %>
+		<%= party.name %> <br>
+		<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<strong><%= @topic.causes.count == 1 ? 'Syy:' : 'Syyt:'  %></strong><br>
+		<% for cause in @topic.causes %>
+		<%= cause.text %> <br>
+		<% end %>	
+		</td>
+		<td>
+		<strong>Mistä on kyse:</strong><br>
+		<% for kp in @topic.key_points %>
+		<%= kp.text %> <br>
+		<% end %>	
+		</td>
+		<td>
+		<strong><%= @topic.consequences.count == 1 ? 'Seuraus:' : 'Seuraukset:' %></strong><br>
+		<% for conseq in @topic.consequences %>
+		<%= conseq.text %> <br>
+		<% end %>
+		</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<strong><%= link_to 'Kysymykset', new_topic_response_set_path(@topic) %></strong> |
+						
+<% else %>
+
+
+
+<h4><%= link_to 'Vastaa ensin aiheeseen liittyviin kysymyksiin', new_topic_response_set_path(@topic) %> </h4>
+
+
+<p>&nbsp;</p>
+
+<% end %>
+
+<% if current_user.admin %>
+<strong><%= link_to 'Uusi kysymys', new_topic_question_path(@topic) %></strong> |
+<% end %>
+<a href="javascript:history.back()">Takaisin</a>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Consequences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consequences.each do |consequence| %>
+      <tr>
+        <td><%= consequence.topic %></td>
+        <td><%= consequence.text %></td>
+        <td><%= link_to 'Show', consequence %></td>
+        <td><%= link_to 'Edit', edit_consequence_path(consequence) %></td>
+        <td><%= link_to 'Destroy', consequence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consequence', new_consequence_path %>

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @topic.name + ' - vastaukset'%></h1>
+
+<p>&nbsp;</p>
+
+<table class='table'>
+	
+	<tr>
+		<td>
+		<strong>Kysymys: </strong>
+		</td>
+		
+		<td>
+		<strong>Vastaus: </strong>
+		</td>
+		
+		<td><strong>Oikein/Väärin: </strong>
+		</td>	
+	</tr>
+  <% for response in @response_set.responses %>
+	<tr>
+		<td>
+		<%= response.question.text %>
+		</td>
+		
+		<td>
+		<%= response.answer.text %>
+		</td>
+		
+		<td><% if response.result %>
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			<% else %>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			<% end %>
+		</td>	
+	</tr>
+   <% end %>
+</table>
+
+
+<%= link_to @topic.name, @topic %></td>	|	
+<a href="javascript:history.back()">Takaisin</a>

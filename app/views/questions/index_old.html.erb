@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Kysymykset</h1>
+
+<br>
+
+<table class = "table">
+ 
+
+    <% @topic.questions.each do |topic_question| %>
+      <tr>
+        <td><%= link_to topic_question.text, topic_question_path(@topic,topic_question) %></td>
+       
+      </tr>
+    <% end %>
+ 
+</table>
+
+<br>
+

@@ -1,0 +1,7 @@
+<div class="form-group">
+  <%= f.label :text, "Vastaus" %>
+  <%= f.text_area :text, :class => "form-control" %>
+   <%= f.check_box :correct %>
+  <%= f.label :correct, "Oikea vastaus" %>
+  <%= link_to_remove_association 'Poista vastaus', f, { wrapper_class: 'form-group' } %>
+</div>

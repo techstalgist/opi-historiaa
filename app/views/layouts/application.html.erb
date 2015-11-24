@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Opi historiaa</title>
+  <%= include_gon %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+<nav class="navbar navbar-default nobottom">
+	<div container="container-fluid">
+		<div class="navbar-header width">
+			<strong><%= link_to 'Opi historiaa', root_path, :class => "navbar-brand" %></strong>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+			    <% if logged_in? %>
+						<li><%= link_to 'Aikakaudet', eras_path %></li>
+						<li><%= link_to 'Aiheet', topics_path %></li>
+						<li class="dropdown">
+			               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			                 Oma tili <b class="caret"></b>
+			               </a>
+			               <ul class="dropdown-menu">
+			                 <li><%= link_to "Profiili", current_user %></li>
+			                 <li class="divider"></li>
+			                 <li>
+			                   <%= link_to "Kirjaudu ulos", logout_path, method: "delete" %>
+			                 </li>
+			               </ul>
+			            </li>
+						<% if current_user.admin %>
+						<li><%= link_to 'Admin', admin_index_path %></li>
+						<% end %>
+			     <% else %>
+			             <li><%= link_to "Kirjaudu sisään", login_path %></li>
+			     <% end %>
+			</ul>
+		</div>
+	</div>	
+</nav>
+     
+	  
+ <div id="main-container" class="container-fluid extra">
+      
+	  <div class="row">
+        <div class="col-md-2 navleft" >
+			<%= render :partial => "subnav" %>
+		  
+        </div>
+        <div class="col-md-7 content">
+		  <% flash.each do |message_type, message| %>
+		          <div class="alert alert-<%= message_type %>"><%= message %></div>
+		        <% end %>
+		  <%= yield %>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+ </div>
+</body>
+</html>
